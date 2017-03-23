@@ -18,3 +18,11 @@ Route::get('/login/customer', function () {
 Route::get('/login/company', function () {
     return view('login.company');
 });
+
+Route::get('/home/company', function () {
+    return view('home.company');
+});
+
+Route::get('/home/customer', function () {
+    return view('home.customer');
+});
