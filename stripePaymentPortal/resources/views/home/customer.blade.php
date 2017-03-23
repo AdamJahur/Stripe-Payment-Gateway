@@ -27,9 +27,7 @@
 <div class="container" style="margin-top: 30px;">
     <div class="row">
         <div class="col-md-12">
-            <table style="width:100%; table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
+            <table style="width:100%; table,th,td{border: 1px solid black; border-collapse: collapse;}
     }
     th, td {
         padding: 5px;
@@ -53,7 +51,8 @@
                                     data-name="Demo Site"
                                     data-description="Widget"
                                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                    data-locale="auto">
+                                    data-locale="auto"
+                                    data-redirect_url="./customer">
                             </script>
                         </form></td>
                 </tr>
