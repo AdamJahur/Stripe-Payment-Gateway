@@ -26,3 +26,11 @@ Route::get('/home/company', function () {
 Route::get('/home/customer', function () {
     return view('home.customer');
 });
+
+Route::get('/paymentHistory/customer', function () {
+    return view('paymentHistory.customer');
+});
+
+Route::get('/paymentHistory/company', function () {
+    return view('paymentHistory.company');
+});
