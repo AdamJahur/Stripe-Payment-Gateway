@@ -45,7 +45,7 @@
                     <td>$700</td>
                     <td>03/18/17</td>
                     <td>02/18/17</td>
-                    <td><form action="../routes/charge" method="POST">
+                    <td><form action="" method="POST">
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="pk_test_RetUOlVlEE1jWEeQ2WEkUqIf"
