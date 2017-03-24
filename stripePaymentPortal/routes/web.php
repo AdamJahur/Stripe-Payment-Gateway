@@ -61,7 +61,7 @@ Route::post ( '/', function (Request $request) {
 Route::get('/serverSide', [
     'as'   => 'serverSide',
     'uses' => function () {
-        $users = App\Data::all();
-        return Datatables::of($users)->make();
+        $Invoices = App\Data::all();
+        return Datatables::of($Invoices)->make();
     }
 ]);
