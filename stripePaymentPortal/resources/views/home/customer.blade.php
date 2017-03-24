@@ -67,7 +67,7 @@
                                     data-description="Widget"
                                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                     data-locale="auto"
-                                    data-redirect_url="../customer">
+                                    data-redirect_url="./customer">
                             </script>
                         </form></td>
                 </tr>
