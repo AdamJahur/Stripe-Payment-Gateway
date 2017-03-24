@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 Route::get('/login/customer', function () {
     return view('login.customer');
@@ -56,3 +57,11 @@ Route::post ( '/', function (Request $request) {
         return Redirect::back ();
     }
 } );
+
+Route::get('/serverSide', [
+    'as'   => 'serverSide',
+    'uses' => function () {
+        $users = App\Data::all();
+        return Datatables::of($users)->make();
+    }
+]);
