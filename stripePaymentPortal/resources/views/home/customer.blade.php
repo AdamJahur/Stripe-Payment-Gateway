@@ -52,24 +52,11 @@
                     <th>Money Owed</th>
                     <th>Due Date:</th>
                     <th>Date Posted:</th>
-                    <th>Pay Now</th>
                 </tr>
                 <tr>
                     <td>$700</td>
                     <td>03/18/17</td>
                     <td>02/18/17</td>
-                    <td><form action="" method="POST">
-                            <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="pk_test_RetUOlVlEE1jWEeQ2WEkUqIf"
-                                    data-amount="999"
-                                    data-name="Demo Site"
-                                    data-description="Widget"
-                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                    data-locale="auto"
-                                    data-redirect_url="./customer">
-                            </script>
-                        </form></td>
                 </tr>
             </table>
 
