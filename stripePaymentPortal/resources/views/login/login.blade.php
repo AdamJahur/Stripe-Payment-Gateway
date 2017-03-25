@@ -3,87 +3,129 @@
 
 @section('content')
     <h2>@yield('title')</h2>
-    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">@yield('buttonTitle')</button>
 
-    <div class="modal fade" id="myModal" role="dialog">
 
-        <div class="modal-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Register</div>
-                            <div class="panel-body">
-                                <form class="form-horizontal" role="form" method="POST" action="">
-                                    {{ csrf_field() }}
+@if (session()->get('name'))
+        <li class="w3-right">
+                Welcome {{session()->get('name') }} , <a class="w3-right" href="/logout">Logout</a> </li> @else
+        <a style="font-weight: bolder; font-size: 20px;" class="w3-blue" href="#" id="auth"
+            onclick="document.getElementById('authentication').style.display='block'">SignIn/SignUp</a>@endif
+    </ul>
+    <div id="authentication" class="w3-modal">
+        <span
+            onclick="document.getElementById('authentication').style.display='none'"
+            class="w3-closebtn w3-grey w3-hover-red w3-container w3-padding-16 w3-display-topright">X</span>
 
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label for="name" class="col-md-4 control-label">Name</label>
+        <div class="w3-modal-content w3-card-8 w3-animate-zoom"
+            style="max-width: 600px">
 
-                                        <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                            @if ($errors->has('name'))
-                                                <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                        <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                            @if ($errors->has('email'))
-                                                <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="password" class="col-md-4 control-label">Password</label>
-
-                                        <div class="col-md-6">
-                                            <input id="password" type="password" class="form-control" name="password" required>
-
-                                            @if ($errors->has('password'))
-                                                <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                                        <div class="col-md-6">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                Register
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+            <div class="col-md-6 w3-card-8 w3-teal" onclick="openForm('Login')">
+                <h3>Sign In</h3>
+            </div>
+            <div class="col-md-6 w3-card-8 w3-teal"
+                onclick="openForm('Register')">
+                <h3>Sign Up</h3>
+            </div>
+            <div style="margin-top: 25px !important;">
+                <div id="Login" class="w3-container form">
+                    <div class="w3-container ">
+                        <div class="w3-section">
+                            <br> <br>@if (count($errors->login) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->login->all() as $error)
+                                    <P>{{ $error }}</p>
+                                    @endforeach
+                                </ul>
                             </div>
+                            @endif 
+                            @if (Session::has('message'))
+                            <div class="alert alert-warning">{{ Session::get('message') }}</div>
+                            @endif
+                            <form action="/login" method="POST">
+                                {{ csrf_field() }} <input type="hidden" name="redirurl"
+                                    value="{{ $_SERVER['REQUEST_URI'] }}"> <label><b>Username</b></label>
+                                <input name="username"
+                                    class="w3-input w3-border w3-margin-bottom" type="text"
+                                    placeholder="Enter Username" required> <label><b>Password</b></label>
+                                <input class="w3-input w3-border w3-margin-bottom"
+                                    name="password" type="password" placeholder="Enter Password"
+                                    required> <input type="submit"
+                                    class="w3-btn w3-btn-block w3-green" value="Login"> <input
+                                    class="w3-check w3-margin-top" type="checkbox"
+                                    checked="checked"> Remember me
+                            </form>
                         </div>
+                    </div>
+                    <div class="w3-container w3-border-top w3-padding-16 ">
+                        <button
+                            onclick="document.getElementById('authentication').style.display='none'"
+                            type="button" class="w3-btn w3-red">Cancel</button>
+                        <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
                     </div>
                 </div>
             </div>
+            <div id="Register" class="w3-container form ">
+                <div class="w3-container">
+                    <div class="w3-section">
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        <br> <br> 
+                        @if (count($errors->register) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->register->all() as $error)
+                                <P>{{ $error }}</p>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <form action="/register" method="POST" id="regForm">
+                            {{ csrf_field() }} <input type="hidden" name="redirurl"
+                                value="{{ $_SERVER['REQUEST_URI'] }}"> <label><b>Email</b></label>
+                            <input class="w3-input w3-border w3-margin-bottom" type="text"
+                                name="email" placeholder="Enter Email"
+                                value="{{ old('email') }}" required> <label><b>Username</b></label>
+                            <input class="w3-input w3-border w3-margin-bottom" type="text"
+                                name="name" placeholder="Enter username" required
+                                value="{{ old('name') }}"> <label><b>Password</b></label> <input
+                                class="w3-input w3-border w3-margin-bottom" type="password"
+                                name="password" required placeholder="Enter Password"> <label><b>Confirm
+                                    Password</b></label> <input
+                                class="w3-input w3-border w3-margin-bottom" required
+                                type="password" name="password_confirmation"
+                                placeholder="Enter Password">
+                            <button type="submit" class="w3-btn w3-btn-block w3-green">SignUp</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="w3-container w3-border-top w3-padding-16 ">
+                    <button
+                        onclick="document.getElementById('authentication').style.display='none'"
+                        type="button" class="w3-btn w3-red">Cancel</button>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="fluid-container"></div>
+    <script>    
+openForm("Login");
+function openForm(formName) {
+    
+    var x = document.getElementsByClassName("form");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    document.getElementById(formName).style.display = "block";  
+}
+</script>
+@if (Session::has('message'))
+    <script>  $('#auth').click(); </script>
+    @endif @if($errors->login->any())
+    <script>  $('#auth').click();</script>
+    @endif @if($errors->register->any())
+    <script>  $('#auth').click(); openForm('Register');</script>
+    @endif
+          
         </div>
     </div>
 @stop
