@@ -29,6 +29,8 @@ Route::get('/home/customer', function () {
     return view('home.customer');
 });
 
+Route::post('/register', 'Controller@login');
+
 Route::get('/paymentHistory/customer', function () {
     return view('paymentHistory.customer');
 });
