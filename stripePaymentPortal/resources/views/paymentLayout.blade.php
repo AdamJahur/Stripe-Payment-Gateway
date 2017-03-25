@@ -48,7 +48,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="./home">Home</a></li>
+                    <li><a href="./home/">Home</a></li>
                     <li><a href="#">Payment History</a></li>
                     <li><a href="./searchAcct">@yield('sectionName')</a></li>
                     <li><a href="#">Logout</a></li>
