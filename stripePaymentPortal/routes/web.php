@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 Route::get('/login/customer', function () {
     return view('login.customer');
@@ -28,9 +29,8 @@ Route::get('/home/customer', function () {
     return view('home.customer');
 });
 
-<<<<<<< HEAD
 Route::post('/register', 'Controller@login');
-=======
+
 Route::get('/paymentHistory/customer', function () {
     return view('paymentHistory.customer');
 });
@@ -59,4 +59,11 @@ Route::post ( '/', function (Request $request) {
         return Redirect::back ();
     }
 } );
->>>>>>> master
+
+Route::get('/serverSide', [
+    'as'   => 'serverSide',
+    'uses' => function () {
+        $Invoices = App\Data::all();
+        return Datatables::of($Invoices)->make();
+    }
+]);
