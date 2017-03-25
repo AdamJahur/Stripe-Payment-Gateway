@@ -10,8 +10,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    function insert(Request $req)
-    {
-        $name = $req->input('name');
-    }
+  
+    public function login(Request $req) {
+    	$username = $req->input('name');
+    	$password = $req->input('password');
+    	return redirect('home.customer');
+}
+
 }

@@ -28,6 +28,9 @@ Route::get('/home/customer', function () {
     return view('home.customer');
 });
 
+<<<<<<< HEAD
+Route::post('/register', 'Controller@login');
+=======
 Route::get('/paymentHistory/customer', function () {
     return view('paymentHistory.customer');
 });
@@ -56,3 +59,4 @@ Route::post ( '/', function (Request $request) {
         return Redirect::back ();
     }
 } );
+>>>>>>> master
