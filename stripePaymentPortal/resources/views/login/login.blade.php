@@ -8,7 +8,7 @@
 @if (session()->get('name'))
         <li class="w3-right">
                 Welcome {{session()->get('name') }} , <a class="w3-right" href="/logout">Logout</a> </li> @else
-        <a style="font-weight: bolder; font-size: 20px;" class="w3-blue" href="#" id="auth"
+        <a style="font-weight: bolder; font-size: 20px" class="w3-blue" href="#" id="auth"
             onclick="document.getElementById('authentication').style.display='block'">SignIn/SignUp</a>@endif
     </ul>
     <div id="authentication" class="w3-modal">

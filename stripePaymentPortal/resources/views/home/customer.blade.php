@@ -3,7 +3,21 @@
 @section('title', 'customerHome')
 @section('sectionName', 'Profile')
 
+
 @section('content')
+    <nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="../paymentHistory/customer.blade.php">Payment History</a></li>
+            <li><a href="../customerProfile.blade.php">profile</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+        </div>
+        </nav>
+        <div class="nav navbar-nav navbar-right">
+            <img src="" alt="Img">
+        </div>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -27,35 +41,22 @@
 <div class="container" style="margin-top: 30px;">
     <div class="row">
         <div class="col-md-12">
-            <table style="width:100%; table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 5px;
-        text-align: left;
-    }">
+            {{--<table style="width:100%; table,th,td{border: 1px solid black; border-collapse: collapse;}--}}
+    {{--}--}}
+    {{--th, td {--}}
+        {{--padding: 5px;--}}
+        {{--text-align: left;--}}
+    {{--}">--}}
+            <table>
                 <tr>
                     <th>Money Owed</th>
                     <th>Due Date:</th>
                     <th>Date Posted:</th>
-                    <th>Pay Now</th>
                 </tr>
                 <tr>
                     <td>$700</td>
                     <td>03/18/17</td>
                     <td>02/18/17</td>
-                    <td><form action="../routes/charge" method="POST">
-                            <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="pk_test_RetUOlVlEE1jWEeQ2WEkUqIf"
-                                    data-amount="999"
-                                    data-name="Demo Site"
-                                    data-description="Widget"
-                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                    data-locale="auto">
-                            </script>
-                        </form></td>
                 </tr>
             </table>
 
